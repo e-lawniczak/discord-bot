@@ -14,7 +14,10 @@ client.on('messageCreate', async (msg) => {
     if (msg.content == "!toggle") {
         isEnabled = !isEnabled;
         let txt = isEnabled ? "off" : "on";
-        msg.channel.send(`Safety switch is ${txt}`);
+        let out = await msg.channel.send(`Safety switch is ${txt}`);
+        setTimeout(()=>{
+            out.delete()
+        }, 500)
     }
     if (msg.content == "!cls") {
         let fetched;
