@@ -16,10 +16,9 @@ client.on('messageCreate', async (msg) => {
         console.log("Command issued: " + msg.content)
         do {
             fetched = await msg.channel.messages.fetch({limit: 100});
+            console.log(fetched[0])
             fetched.forEach(message => {
-                if(message.pinned){
                     toDelete.push(message)
-                }
             });
             // let d = new Collection(toDelete);
             console.log(toDelete)
