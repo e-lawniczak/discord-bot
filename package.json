@@ -1,0 +1,15 @@
+{
+    "name": "cleaner-bot",
+    "version": "1.0.1",
+    "description": "Cleans chat",
+    "author": "Oxygen Enjoyer",
+    "dependencies": {
+        "axios": "^0.27.2",
+        "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+        "discord.js": "^13.8.1",
+        "dotenv": "^16.0.1"
+    },
+    "scripts": {
+        "start": "node chat_cleaner.js"
+    }
+}
