@@ -11,24 +11,24 @@ client.on('ready', () => {
 
 client.on('messageCreate', async (msg) => {
     if (msg.content == "!cls") {
-        let fetched; 
+        let fetched;
         let toDelete = [];
         console.log("Command issued: " + msg.content)
         do {
-            fetched = await msg.channel.messages.fetch({limit: 100});
-            console.log(fetched[0])
+            fetched = await msg.channel.messages.fetch({ limit: 100 });
             fetched.forEach(message => {
+                if(!message.pinned){
                     toDelete.push(message)
+                }
             });
-            // let d = new Collection(toDelete);
-            console.log(toDelete)
-            msg.channel.bulkDelete(toDelete)
-            
+            await msg.channel.bulkDelete(toDelete)
+
         } while (fetched.size >= 0);
 
 
     }
 });
 
-client.login(process.env.token);
+// client.login(process.env.token);
+client.login("OTk4MjMzNDY1ODE4NDY4NDEy.Gu7_Cf.O40syDdfwQ6ojM58DgNHwZXm9Ufh0qKgfecw4c");
 
