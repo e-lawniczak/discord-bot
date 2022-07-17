@@ -8,16 +8,15 @@ let isEnabled = false
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!!!!`);
-
 });
 
 client.on('messageCreate', async (msg) => {
-    if (msg.content == "cc!toggle") {
+    if (msg.content == "!toggle") {
         isEnabled = !isEnabled;
         let txt = isEnabled ? "off" : "on";
         msg.channel.send(`Safety switch is ${txt}`);
     }
-    if (msg.content == "cc!clear") {
+    if (msg.content == "!cls") {
         let fetched;
         let toDelete;
         console.log("Command issued: " + msg.content)
@@ -36,7 +35,7 @@ client.on('messageCreate', async (msg) => {
 
             isEnabled = false
         } else {
-            msg.channel.send(`Turn off safety switch first using cc!toggle`);
+            msg.channel.send(`Turn off safety switch first using !toggle`);
         }
     }
 });
