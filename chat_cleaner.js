@@ -38,7 +38,10 @@ client.on('messageCreate', async (msg) => {
 
             isEnabled = false
         } else {
-            msg.channel.send(`Turn off safety switch first using !toggle`);
+            let out = await msg.channel.send(`Turn off safety switch first using !toggle`);
+            setTimeout(()=>{
+                out.delete()
+            }, 500)
         }
     }
 });
