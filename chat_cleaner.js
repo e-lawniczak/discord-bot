@@ -10,7 +10,7 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', async (msg) => {
-    if (msg.content == "!cls") {
+    if (msg.content == "cc!clear") {
         let fetched;
         console.log("Command issued: " + msg.content)
         do {
