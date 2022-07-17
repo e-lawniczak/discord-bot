@@ -10,6 +10,7 @@
         "dotenv": "^16.0.1"
     },
     "scripts": {
-        "start": "node chat_cleaner.js"
+        "start": "node chat_cleaner.js",
+        "git": "git add . && git commit -m 'comment' && git push -u origin develop"
     }
 }
