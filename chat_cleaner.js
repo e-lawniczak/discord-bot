@@ -12,26 +12,32 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', async (msg) => {
-    if(msg.content == "cc!toggle"){
-        isEnabled = !isEnabledl
+    if (msg.content == "cc!toggle") {
+        isEnabled = !isEnabled;
+        let txt = isEnabled ? "off" : "on";
+        msg.channel.send(`Safety switch is ${txt}`);
     }
-    if (msg.content == "cc!clear" && isEnabled) {
+    if (msg.content == "cc!clear") {
         let fetched;
-        let toDelete ;
+        let toDelete;
         console.log("Command issued: " + msg.content)
-        do {
-            toDelete = [];
-            fetched = await msg.channel.messages.fetch({ limit: 100 });
-            fetched.forEach(message => {
-                if (!message.pinned) {
-                    toDelete.push(message)
-                }
-            });
-            await msg.channel.bulkDelete(toDelete)
+        if (isEnabled) {
+            do {
+                toDelete = [];
+                fetched = await msg.channel.messages.fetch({ limit: 100 });
+                fetched.forEach(message => {
+                    if (!message.pinned) {
+                        toDelete.push(message)
+                    }
+                });
+                await msg.channel.bulkDelete(toDelete)
 
-        } while (fetched.size >= 0);
+            } while (fetched.size >= 0);
 
-
+            isEnabled = false
+        } else {
+            msg.channel.send(`Turn off safety switch first using cc!toggle`);
+        }
     }
 });
 
