@@ -11,7 +11,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', async (msg) => {
     if (msg.content == "!cls") {
-        let m = await msg.channel.messages.fetch()
+        let m = await msg.channel.messages.fetch({cache: true})
         m.forEach(item => {
             if (!item.pinned) {
                 item.delete()
