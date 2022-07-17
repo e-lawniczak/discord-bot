@@ -12,9 +12,10 @@ client.on('ready', () => {
 client.on('messageCreate', async (msg) => {
     if (msg.content == "cc!clear") {
         let fetched;
+        let toDelete ;
         console.log("Command issued: " + msg.content)
         do {
-            let toDelete = [];
+            toDelete = [];
             fetched = await msg.channel.messages.fetch({ limit: 100 });
             fetched.forEach(message => {
                 if (!message.pinned) {
