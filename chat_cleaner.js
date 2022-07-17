@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-const { Client, Intents} = require('discord.js');
+const { Client, Intents } = require('discord.js');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
@@ -11,15 +11,21 @@ client.on('ready', () => {
 
 client.on('messageCreate', async (msg) => {
     if (msg.content == "!cls") {
-        let m = await msg.channel.messages.fetch({cache: true})
-        m.forEach(item => {
-            if (!item.pinned) {
-                item.delete()
-                    .then(msg => console.log(`Deleted message from ${msg.author.username}`))
-                    .catch(console.error);
-            }
+        let fetched; 
+        let toDelete = [];
+        do {
+            fetched = await msg.channel.messages.fetch({ limit: 100 });
+            fetched.forEach(message => {
+                if(message.pinned){
+                    toDelete.push(message)
+                }
+            });
+            let d = new Collection(toDelete);
+            msg.channel.bulkDelete(d)
+            
+        } while (fetched.size >= 0);
 
-        })
+
     }
 });
 
