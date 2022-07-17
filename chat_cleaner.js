@@ -17,8 +17,7 @@ client.on('messageCreate', async (msg) => {
         let txt = isEnabled ? "off" : "on";
         out = await msg.channel.send(`Safety switch is ${txt}`)
         setTimeout(() => {
-            out.delete()
-            msg.delete()
+            msg.channel.bulkDelete([out, msg])
         }, 2000)
 
     }
@@ -43,8 +42,7 @@ client.on('messageCreate', async (msg) => {
         } else {
             out = await msg.channel.send(`Turn off safety switch first using !toggle`);
             setTimeout(() => {
-                out.delete()
-                msg.delete()
+                msg.channel.bulkDelete([out, msg])
             }, 2000)
         }
     }
