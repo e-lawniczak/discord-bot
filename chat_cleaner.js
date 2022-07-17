@@ -4,13 +4,18 @@ const { Client, Intents, Collection } = require('discord.js');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
+let isEnabled = false
+
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!!!!`);
 
 });
 
 client.on('messageCreate', async (msg) => {
-    if (msg.content == "cc!clear") {
+    if(msg.content == "cc!toggle"){
+        isEnabled = !isEnabledl
+    }
+    if (msg.content == "cc!clear" && isEnabled) {
         let fetched;
         let toDelete ;
         console.log("Command issued: " + msg.content)
