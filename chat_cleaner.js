@@ -1,6 +1,4 @@
-// https://discordapp.com/oauth2/authorize?&client_id=998233465818468412&scope=bot&permissions=292057888832
 const Discord = require('discord.js');
-// const auth = require("./auth.json");
 
 const { Client, Intents} = require('discord.js');
 
