@@ -20,8 +20,9 @@ client.on('messageCreate', async (msg) => {
                     toDelete.push(message)
                 }
             });
-            let d = new Collection(toDelete);
-            msg.channel.bulkDelete(d)
+            // let d = new Collection(toDelete);
+            console.log(toDelete)
+            msg.channel.bulkDelete(toDelete)
             
         } while (fetched.size >= 0);
 
