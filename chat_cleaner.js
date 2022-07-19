@@ -8,6 +8,7 @@ let isEnabled = false
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!!!!`);
+    client.user.setActivity("Cleaning my room", {type: "COMPETING"})
 });
 
 client.on('messageCreate', async (msg) => {
