@@ -8,7 +8,7 @@ let isEnabled = false
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!!!!`);
-    client.user.setActivity("Cleaning my room", {type: "COMPETING"})
+    client.user.setActivity("Cleaning my room", { type: "COMPETING" })
 });
 
 client.on('messageCreate', async (msg) => {
@@ -32,10 +32,10 @@ client.on('messageCreate', async (msg) => {
                 fetched = await msg.channel.messages.fetch({ limit: 100 });
                 fetched.forEach(message => {
                     if (!message.pinned) {
-                        if(message.createdAt.getTime() <= new Date(new Date().getDate() - 14).getTime() ){
+                        if (message.createdAt.getTime() <= new Date(new Date().getDate() - 14).getTime()) {
                             toDelete.push(message)
                         }
-                        else{
+                        else {
                             message.delete()
                         }
                     }
