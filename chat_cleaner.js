@@ -32,7 +32,12 @@ client.on('messageCreate', async (msg) => {
                 fetched = await msg.channel.messages.fetch({ limit: 100 });
                 fetched.forEach(message => {
                     if (!message.pinned) {
-                        toDelete.push(message)
+                        if(message.createdAt.getTime() <= new Date(new Date().getDate() - 14).getTime() ){
+                            toDelete.push(message)
+                        }
+                        else{
+                            message.delete()
+                        }
                     }
                 });
                 await msg.channel.bulkDelete(toDelete)
